@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using CoreGraphics;
 using Foundation;
@@ -95,26 +96,34 @@ namespace Rg.Plugins.Popup.IOS.Impl
 
         void DisposeModelAndChildrenRenderers(VisualElement view)
         {
-            IVisualElementRenderer renderer;
-            foreach (VisualElement child in view.Descendants())
+            try
             {
-                renderer = XFPlatform.GetRenderer(child);
-                XFPlatform.SetRenderer(child, null);
+                IVisualElementRenderer renderer;
+                foreach (VisualElement child in view.Descendants())
+                {
+                    renderer = XFPlatform.GetRenderer(child);
+                    XFPlatform.SetRenderer(child, null);
 
+                    if (renderer != null)
+                    {
+                        renderer.NativeView.RemoveFromSuperview();
+                        renderer.Dispose();
+                    }
+                }
+
+                renderer = XFPlatform.GetRenderer(view);
                 if (renderer != null)
                 {
                     renderer.NativeView.RemoveFromSuperview();
                     renderer.Dispose();
                 }
-            }
 
-            renderer = XFPlatform.GetRenderer(view);
-            if (renderer != null)
-            {
-                renderer.NativeView.RemoveFromSuperview();
-                renderer.Dispose();
+                XFPlatform.SetRenderer(view, null);
             }
-            XFPlatform.SetRenderer(view, null);
+            catch (Exception ex)
+            {
+                Debug.Write(ex.Message);
+            }
         }
 
         void HandleChildRemoved(object sender, ElementEventArgs e)
