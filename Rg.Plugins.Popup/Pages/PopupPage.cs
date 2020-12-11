@@ -23,15 +23,15 @@ namespace Rg.Plugins.Popup.Pages
 
         #region Internal Properties
 
-        internal Task AppearingTransactionTask { get; set; }
+        internal Task? AppearingTransactionTask { get; set; }
 
-        internal Task DisappearingTransactionTask { get; set; }
+        internal Task? DisappearingTransactionTask { get; set; }
 
         #endregion
 
         #region Events
 
-        public event EventHandler BackgroundClicked;
+        public event EventHandler? BackgroundClicked;
 
         #endregion
 
@@ -63,7 +63,7 @@ namespace Rg.Plugins.Popup.Pages
             set { SetValue(HasSystemPaddingProperty, value); }
         }
 
-        public static readonly BindableProperty AnimationProperty = BindableProperty.Create(nameof(Animation), typeof(IPopupAnimation), typeof(PopupPage));
+        public static readonly BindableProperty AnimationProperty = BindableProperty.Create(nameof(Animation), typeof(IPopupAnimation), typeof(PopupPage), new ScaleAnimation());
 
         public IPopupAnimation Animation
         {
@@ -126,10 +126,9 @@ namespace Rg.Plugins.Popup.Pages
         public PopupPage()
         {
             BackgroundColor = Color.FromHex("#80000000");
-            Animation = new ScaleAnimation();
         }
 
-        protected override void OnPropertyChanged(string propertyName = null)
+        protected override void OnPropertyChanged(string? propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
 
@@ -289,7 +288,7 @@ namespace Rg.Plugins.Popup.Pages
 
         #region Internal Methods
 
-        internal async void SendBackgroundClick()
+        internal async Task SendBackgroundClick()
         {
             BackgroundClicked?.Invoke(this, EventArgs.Empty);
 
