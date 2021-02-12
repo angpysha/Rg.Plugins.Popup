@@ -46,7 +46,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.ArtifactStagingDirectory)'
+    SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: '**/*.nupkg'
     TargetFolder: '$(Pipeline.Workspace)\artifacts'
 
