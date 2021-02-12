@@ -25,10 +25,15 @@ steps:
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
-- task: DotNetCoreCLI@2
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'build'
+#     projects: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
+- task: VSBuild@1
   inputs:
-    command: 'build'
-    projects: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
+    solution: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
+    vsVersion: '16.0'
+    clean: true
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
