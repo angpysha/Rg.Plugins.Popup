@@ -34,25 +34,26 @@ steps:
     solution: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
     vsVersion: '16.0'
     clean: true
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'pack'
-    packagesToPack: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
-    nobuild: true
-    includesymbols: true
-    includesource: true
-    versioningScheme: 'off'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
+#     nobuild: true
+#     includesymbols: true
+#     includesource: true
+#     versioningScheme: 'off'
+
 
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.ArtifactStagingDirectory)'
-    Contents: '*.nupkg'
+    Contents: '**/*.nupkg'
     TargetFolder: '$(Pipeline.Workspace)\artifacts'
 
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)\artifacts'
-    artifact: 'pacakge'
+    artifact: 'package'
     publishLocation: 'pipeline'
 
 
