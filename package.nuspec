@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>Rg.Plugins.Popup</id>
+    <version>2.0.0.11-angpysha</version>
+    <title>Rg.Plugins.Popup</title>
+    <authors>Andrii Petrovskyi</authors>
+    <owners>Kirill Lyubimov, rotorgames, martijn00, Baseflow</owners>
+    <projectUrl>https://github.com/rotorgames/Rg.Plugins.Popup</projectUrl>
+    <releaseNotes>Fixed Rg.Popup</releaseNotes>
+    <copyright>Copyright 2021 Andrii Petrovskyi</copyright>
+    <description>Plugin for Xamarin forms. Allows you to open any page as a popup.</description>
+  </metadata>
+  <files>
+    <file src="Rg.Plugins.Popup\bin\Release\**\Rg.Plugins.Popup*" target="lib"/>
+  </files>
+</package>
