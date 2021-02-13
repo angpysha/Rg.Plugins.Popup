@@ -33,6 +33,7 @@ steps:
   inputs:
     solution: 'Rg.Plugins.Popup/Rg.Plugins.Popup.csproj'
     vsVersion: '16.0'
+    configuration: 'Release'
     clean: true
 # - task: DotNetCoreCLI@2
 #   inputs:
