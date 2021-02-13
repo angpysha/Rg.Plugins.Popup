@@ -12,6 +12,6 @@
     <description>Plugin for Xamarin forms. Allows you to open any page as a popup.</description>
   </metadata>
   <files>
-    <file src="Rg.Plugins.Popup\bin\Release\**\Rg.Plugins.Popup*" target="lib"/>
+    <file src=".\Rg.Plugins.Popup\bin\Release\**\Rg.Plugins.Popup*" target="lib"/>
   </files>
 </package>
